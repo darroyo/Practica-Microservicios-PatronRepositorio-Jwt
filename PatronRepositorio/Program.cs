@@ -3,6 +3,7 @@ using PatronRepositorio.Data;
 using PatronRepositorio.Repository;
 using AutoMapper;
 using PatronRepositorio.Dtos;
+using PatronRepositorio.AutoMapperProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ builder.Services.AddScoped<UnitOfWork>();
 // Auto Mapper Configurations
 var mapperConfig = new MapperConfiguration(mc =>
 {
-    mc.AddProfile(new MappingProfile());
+    mc.AddProfile(new PizzaProfile());
 });
 
 IMapper mapper = mapperConfig.CreateMapper();
@@ -46,17 +47,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-
-
-
-
-
-internal class MappingProfile : Profile
-{
-    public MappingProfile()
-    {
-        // Add as many of these lines as you need to map your objects
-        CreateMap<Pizza, PizzaDto>().ReverseMap();
-    }
-}
