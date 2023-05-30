@@ -1,23 +1,28 @@
-﻿using PatronRepositorio.Data;
+﻿using AutoMapper;
+using PatronRepositorio.Data;
+using PatronRepositorio.Dtos;
 
 namespace PatronRepositorio.Repository
 {
     public class UnitOfWork : IDisposable
     {
-        public UnitOfWork(MyDbContext context_) { 
+        public UnitOfWork(MyDbContext context_, IMapper mapper_) { 
             this.context = context_;
+            this.mapper = mapper_;
         }
         private MyDbContext context;
-        private IGenericRepository<Pizza> _PizzaRepository;
+        private IMapper mapper;
+        private IGenericRepository<Pizza,PizzaDto> _PizzaRepository;
 
-        public IGenericRepository<Pizza> PizzaRepository
+        public IGenericRepository<Pizza, PizzaDto> PizzaRepository
         {
             get
             {
 
                 if (this._PizzaRepository == null)
                 {
-                    this._PizzaRepository = new GenericRepositoryFromBBDD<Pizza>(context);
+                    this._PizzaRepository = 
+                        new GenericRepositoryFromBBDD<Pizza, PizzaDto>(context, mapper);
                 }
                 // SI QUISIERAMOS QUE PIZZA TIRARA DE OTRO REPO, SOLO TENDRIAMOS QUE TOCAR AQUI
                 // this._PizzaRepository = new GenericRepositoryFromFile<Pizza>("Mi fichero");

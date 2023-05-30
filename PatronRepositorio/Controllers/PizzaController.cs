@@ -13,21 +13,30 @@ namespace PatronRepositorio.Controllers
 
         private readonly ILogger<PizzaController> _logger;
         private readonly UnitOfWork _UnitOfWork;
-        private readonly IMapper _mapper;
 
         public PizzaController(ILogger<PizzaController> logger, UnitOfWork UnitOfWork,
             IMapper mapper)
         {
             _logger = logger;
             _UnitOfWork = UnitOfWork;
-            _mapper = mapper;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet(Name = "Get")]
         public async Task<IEnumerable<PizzaDto>> Get()
         {
-            var xx = await _UnitOfWork.PizzaRepository.Get();
-            return _mapper.Map<IEnumerable<PizzaDto>>(xx);
+            return await _UnitOfWork.PizzaRepository.Get();
+        }
+        [HttpGet("{filter}", Name = "GetWithFilter")]
+        public async Task<IEnumerable<PizzaDto>> GetWithFilter(int filter)
+        {
+            return await _UnitOfWork.PizzaRepository.Get(x=>x.Id > filter);
+        }
+
+        [HttpPost(Name = "Insert")]
+        public async Task Set(Pizza pizza)
+        {
+            await _UnitOfWork.PizzaRepository.Insert(pizza);
+            _UnitOfWork.Save();// todo, no se si es correcto ponerlo aqui
         }
     }
 }

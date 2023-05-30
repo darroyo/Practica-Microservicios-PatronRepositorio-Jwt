@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using PatronRepositorio.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using PatronRepositorio.Repository;
 using AutoMapper;
 using PatronRepositorio.Dtos;
@@ -26,6 +24,7 @@ var mapperConfig = new MapperConfiguration(mc =>
 
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
+builder.Services.AddApplicationInsightsTelemetry();
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())

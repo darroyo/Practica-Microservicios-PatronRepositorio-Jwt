@@ -4,22 +4,22 @@ using System.Threading.Tasks;
 
 namespace PatronRepositorio.Repository
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<X,Y> where X : class where Y : class
     {
 
-        Task<IEnumerable<T>> Get(
-            Expression<Func<T, bool>> filter = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+        Task<IEnumerable<Y>> Get(
+            Expression<Func<X, bool>> filter = null,
+            Func<IQueryable<X>, IOrderedQueryable<X>> orderBy = null,
             string includeProperties = "");
 
-        public Task<T> GetByID(object id);
+        public Task<Y> GetByID(object id);
 
-        Task Insert(T entity);
+        Task Insert(X entity);
 
         Task Delete(object id);
 
-        Task Delete(T entityToDelete);
+        Task Delete(X entityToDelete);
 
-        Task Update(T entityToUpdate);
+        Task Update(X entityToUpdate);
     }
 }
