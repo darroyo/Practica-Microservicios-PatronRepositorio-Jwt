@@ -20,7 +20,7 @@ builder.Services.AddScoped<UnitOfWork>();
 // Auto Mapper Configurations
 var mapperConfig = new MapperConfiguration(mc =>
 {
-    mc.AddProfile(new PizzaProfile());
+    mc.AddProfile(new AutomapperProfiles());
 });
 
 IMapper mapper = mapperConfig.CreateMapper();

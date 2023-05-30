@@ -4,9 +4,9 @@ using PatronRepositorio.Dtos;
 
 namespace PatronRepositorio.AutoMapperProfiles
 {
-    public class PizzaProfile:Profile
+    public class AutomapperProfiles:Profile
     {
-        public PizzaProfile() {
+        public AutomapperProfiles() {
             CreateMap<Pizza, PizzaDto>()
                 .ForMember(
                     dest=> dest.Username, 
