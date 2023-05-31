@@ -3,33 +3,31 @@ using Microsoft.AspNetCore.Mvc;
 using PatronRepositorio.Data;
 using PatronRepositorio.Dtos;
 using PatronRepositorio.Repository;
+using PatronRepositorio.Repository.Common;
+using PatronRepositorio.Services;
 
 namespace PatronRepositorio.Controllers
 {
-    //[ApiController]
-    //[Route("[controller]")]
-    //public class PizzaController : ControllerBase
-    //{
+    [ApiController]
+    [Route("[controller]/[action]")]
+    public class FinancialController : ControllerBase
+    {
 
-    //    private readonly ILogger<PizzaController> _logger;
-    //    private readonly UnitOfWorkService _UnitOfWorkService;
+        private readonly ILogger<FinancialController> _logger;
+        private readonly IFinancialService _FinancialService;
 
-    //    public PizzaController(ILogger<PizzaController> logger, UnitOfWorkService UnitOfWork,
-    //        IMapper mapper)
-    //    {
-    //        _logger = logger;
-    //        _UnitOfWorkService = UnitOfWork;
-    //    }
+        public FinancialController(ILogger<FinancialController> logger, IFinancialService FinancialService,
+            IMapper mapper)
+        {
+            _logger = logger;
+            _FinancialService = FinancialService;
+        }
 
-    //    [HttpGet(Name = "Get")]
-    //    public async Task<IEnumerable<object>> Get()
-    //    {
-    //        return await _UnitOfWorkService.FoodService.GetAllById(0);
-    //    }
-    //    [HttpGet("{filter}", Name = "GetWithFilter")]
-    //    public async Task<IEnumerable<object>> GetWithFilter(int filter)
-    //    {
-    //        return await _UnitOfWorkService.FoodService.GetAllById(filter);
-    //    }
-    //}
+
+        [HttpGet(Name = "GetAllEconomicalDataAsync")]
+        public async Task<FinancialDataDto> GetAllEconomicalDataAsync()
+        {
+            return await _FinancialService.GetAllEconomicalDataAsync();
+        }
+    }
 }

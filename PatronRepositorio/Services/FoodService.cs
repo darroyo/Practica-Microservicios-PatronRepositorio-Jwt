@@ -34,12 +34,12 @@ namespace PatronRepositorio.Services
         public async Task<IEnumerable<ComidaDto>> GetAll()
         {
             return
-                _mapper.Map<IEnumerable<ComidaDto>>(
+                (
                     (await GetAlitas())
                     .Union(
                         (await GetHamburguesas())
                      )
-                ); ;
+                );
         }
     }
 }

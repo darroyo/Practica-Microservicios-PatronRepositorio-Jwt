@@ -9,23 +9,8 @@ namespace PatronRepositorio.Repository.Common
             context = context_;
         }
         private MyDbContext context;
-        private IGenericRepository<Comida> _ComidaRepository;
         private IGenericRepository<Hamburguesa> _HamburguesaRepository;
         private IGenericRepository<Alita> _AlitaRepository;
-
-        public IGenericRepository<Comida> ComidaRepository
-        {
-            get
-            {
-
-                if (_ComidaRepository == null)
-                {
-                    _ComidaRepository =
-                        new GenericRepositoryFromBBDD<Comida>(context);
-                }
-                return _ComidaRepository;
-            }
-        }
 
         public IGenericRepository<Hamburguesa> HamburguesaRepository
         {

@@ -22,6 +22,7 @@ builder.Services.AddDbContext<MyDbContext>(
 // TODO Si quisiéramos cambiar a otras implementaciones, tocaríamos aqui
 builder.Services.AddScoped<IUnitOfWork,UnitOfWorkFromBBDD>();
 builder.Services.AddScoped<IFoodService, FoodService>();
+builder.Services.AddScoped<IFinancialService, FinancialService>();
 
 // Auto Mapper Configurations
 var mapperConfig = new MapperConfiguration(mc =>
