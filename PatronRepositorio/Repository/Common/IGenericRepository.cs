@@ -2,17 +2,17 @@
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace PatronRepositorio.Repository
+namespace PatronRepositorio.Repository.Common
 {
-    public interface IGenericRepository<X,Y> where X : class where Y : class
+    public interface IGenericRepository<X> where X : class
     {
 
-        Task<IEnumerable<Y>> Get(
+        Task<IEnumerable<X>> GetAll(
             Expression<Func<X, bool>> filter = null,
             Func<IQueryable<X>, IOrderedQueryable<X>> orderBy = null,
             string includeProperties = "");
 
-        public Task<Y> GetByID(object id);
+        public Task<X> GetByID(object id);
 
         Task Insert(X entity);
 

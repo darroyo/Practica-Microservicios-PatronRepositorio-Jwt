@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using PatronRepositorio.Data;
-using PatronRepositorio.Repository;
 using AutoMapper;
 using PatronRepositorio.Dtos;
 using PatronRepositorio.AutoMapperProfiles;
+using PatronRepositorio.Repository.Common;
+using PatronRepositorio.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// DI
 builder.Services.AddDbContext<MyDbContext>(
         options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<UnitOfWork>();
+
+// TODO Si quisiéramos cambiar a otras implementaciones, tocaríamos aqui
+builder.Services.AddScoped<IUnitOfWork,UnitOfWorkFromBBDD>();
+builder.Services.AddScoped<IFoodService, FoodService>();
 
 // Auto Mapper Configurations
 var mapperConfig = new MapperConfiguration(mc =>

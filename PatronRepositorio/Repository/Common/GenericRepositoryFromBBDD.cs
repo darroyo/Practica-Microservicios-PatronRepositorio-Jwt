@@ -7,23 +7,21 @@ using Microsoft.EntityFrameworkCore;
 using PatronRepositorio.Data;
 using AutoMapper;
 
-namespace PatronRepositorio.Repository
+namespace PatronRepositorio.Repository.Common
 {
 
-    public class GenericRepositoryFromBBDD<X, Y> : IGenericRepository<X, Y> where X : class where Y : class
+    public class GenericRepositoryFromBBDD<X> : IGenericRepository<X> where X : class
     {
         internal MyDbContext context;
         internal DbSet<X> dbSet;
-        internal IMapper mapper;
 
-        public GenericRepositoryFromBBDD(MyDbContext context, IMapper mapper)
+        public GenericRepositoryFromBBDD(MyDbContext context)
         {
             this.context = context;
-            this.dbSet = context.Set<X>();
-            this.mapper = mapper;
+            dbSet = context.Set<X>();
         }
 
-        public async Task<IEnumerable<Y>> Get(
+        public async Task<IEnumerable<X>> GetAll(
             Expression<Func<X, bool>> filter = null,
             Func<IQueryable<X>, IOrderedQueryable<X>> orderBy = null,
             string includeProperties = "")
@@ -43,17 +41,17 @@ namespace PatronRepositorio.Repository
 
             if (orderBy != null)
             {
-                return mapper.Map<IEnumerable<Y>>(await orderBy(query).ToListAsync());
+                return await orderBy(query).ToListAsync();
             }
             else
             {
-                return mapper.Map<IEnumerable<Y>>(await query.ToListAsync());
+                return await query.ToListAsync();
             }
         }
 
-        public async Task<Y> GetByID(object id)
+        public async Task<X> GetByID(object id)
         {
-            return mapper.Map<Y>(await dbSet.FindAsync(id));
+            return await dbSet.FindAsync(id);
         }
 
         public async Task Insert(X entity)

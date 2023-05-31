@@ -5,15 +5,33 @@ using System.Data;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using PatronRepositorio.Data;
+using AutoMapper;
 
-namespace PatronRepositorio.Repository
+namespace PatronRepositorio.Repository.Common
 {
 
-    public class GenericRepositoryFromFile<X,Y>:IGenericRepository<X, Y> where X : class where Y : class
+    public class GenericRepositoryFromFile<X> : IGenericRepository<X> where X : class
     {
+        private string FilePath { get; set; }
 
-        public GenericRepositoryFromFile(string filePAth)
+        public GenericRepositoryFromFile(string FilePath)
         {
+            this.FilePath = FilePath;
+        }
+
+        public Task<IEnumerable<X>> GetAll(Expression<Func<X, bool>> filter = null, Func<IQueryable<X>, IOrderedQueryable<X>> orderBy = null, string includeProperties = "")
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<X> GetByID(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Insert(X entity)
+        {
+            throw new NotImplementedException();
         }
 
         public Task Delete(object id)
@@ -22,21 +40,6 @@ namespace PatronRepositorio.Repository
         }
 
         public Task Delete(X entityToDelete)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Y>> Get(Expression<Func<X, bool>> filter = null, Func<IQueryable<X>, IOrderedQueryable<X>> orderBy = null, string includeProperties = "")
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Y> GetByID(object id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Insert(X entity)
         {
             throw new NotImplementedException();
         }

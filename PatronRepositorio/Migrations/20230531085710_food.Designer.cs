@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PatronRepositorio.Data;
 
@@ -10,16 +11,18 @@ using PatronRepositorio.Data;
 namespace PatronRepositorio.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230531085710_food")]
+    partial class food
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
 
             modelBuilder.Entity("PatronRepositorio.Data.Alita", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdComida")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -33,7 +36,7 @@ namespace PatronRepositorio.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdComida");
 
                     b.HasIndex("ComidaId");
 
@@ -63,7 +66,7 @@ namespace PatronRepositorio.Migrations
 
             modelBuilder.Entity("PatronRepositorio.Data.Hamburguesa", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdComida")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -76,7 +79,7 @@ namespace PatronRepositorio.Migrations
                     b.Property<int>("NumeroCarnes")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdComida");
 
                     b.HasIndex("ComidaId");
 

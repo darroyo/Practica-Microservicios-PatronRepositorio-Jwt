@@ -9,11 +9,13 @@ namespace PatronRepositorio.Data
         {
         }
 
-        public DbSet<Pizza> Pizzas { get; set; }
+        public DbSet<Hamburguesa> Hamburguesas { get; set; }
+        public DbSet<Alita> Alitas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Pizza>().ToTable("Pizza");
+            modelBuilder.Entity<Hamburguesa>().ToTable("Hamburguesa");
+            modelBuilder.Entity<Alita>().ToTable("Alita");
         }
     }
 }
