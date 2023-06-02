@@ -15,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(x=>
     {
+        // todo, si queremos importar el api, es neceario comentar todo esto
         x.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "JWT test" });
 
         x.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
@@ -48,12 +49,14 @@ builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(x =>
     {
+        //x.RequireHttpsMetadata = false;//??
+        //x.SaveToken = true;//??
         x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
         {
             ValidateIssuer = true,// valida emisor
             ValidateAudience = true, // valida audiencia
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
+            ValidateLifetime = true, // valida el tiempo
+            ValidateIssuerSigningKey = true, // valida la key
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(
@@ -74,9 +77,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-// todo Autenticación
+// todo Autenticación y autorizacion
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllers();

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -31,10 +32,39 @@ namespace JWT.Controllers
             })
             .ToArray();
         }
-        [Authorize] // Mejor asi, verifica antes de entrar al código que el token es correcto,
-        // todo, pero, como lo hace???
-        [HttpGet(Name = "GetWeatherForecastOnlyAdmins")]
-        public dynamic GetWeatherForecastOnlyAdmins()
+        // todo, puede ser a nivel de método o de controlador
+        // en este caso solo usuarios logueados, SOLO LOS USUARIOS LOGEADOS TENDRÁN UN TOKEN CORRECTO
+        // LO QUE HACE ESTO ES VERIFICAR QUE SE PASA UN TOKEN CORRECTO CON LA CONFIGURACIÓN QUE HEMOS
+        // PUESTO EN EL PROGRAM, ES DECIR, CLAVE CORRECTA, NO EXPIRADA... ETC -->
+        // builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        [Authorize]
+        [HttpGet(Name = "GetWeatherForecastOnlyLogged")]
+        public IEnumerable<WeatherForecast> GetWeatherForecastOnlyLogged()
+        {
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+
+        [Authorize(Roles = "Administrador")]
+        [HttpGet(Name = "GetWeatherForecastOnlyLoggedAndAdminsVersionMejorada")]
+        public dynamic GetWeatherForecastOnlyLoggedAndAdminsVersionMejorada()
+        {
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+        [Authorize]
+        [HttpGet(Name = "GetWeatherForecastOnlyLoggedAndAdminsVersionCutre")]
+        public dynamic GetWeatherForecastOnlyLoggedAndAdminsVersionCutre()
         {
             // todo
             var identity = HttpContext.User.Identity as ClaimsIdentity;
