@@ -8,50 +8,24 @@ namespace JWT
         public string Issuer { get; set; }
         public string Audience { get; set; }
         public string Subject { get; set; }
-    
-        public static dynamic validarToken(ClaimsIdentity identity)
+
+        public static Usuario? dameUsuarioPorToken(ClaimsIdentity identity)
         {
             try
             {
-                if(identity.Claims.Count()==0)
+                if (identity == null || identity.Claims.Count()==0)
                 {
-
-                    return new
-                    {
-                        success = false,
-                        message = "Token no valido"
-                    };
+                    return null;
                 }
 
-                // Necesitamos saber el usuario al que
-                // pertenece el token
-                var Id = identity.Claims.FirstOrDefault(x=>x.Type == "IdUsuario").Value;
-
+                var Id = identity.Claims.FirstOrDefault(x => x.Type == "IdUsuario").Value;// todo, esto no creo que sea muy seguro
                 var usuario = Usuario.DB().FirstOrDefault(x => x.Id.ToString() == Id);
-
-                if(usuario == null)
-                {
-                    return new
-                    {
-                        success = false,
-                        message = "Usuario no encontrado"
-                    };
-                }
-
-                return new
-                {
-                    success = true,
-                    message = "Token valido",
-                    result = usuario
-                };
+                
+                return usuario;
             }
             catch (Exception ex)
             {
-                return new
-                {
-                    success = false,
-                    message = ex.Message
-                };
+                return null;
             }
         }
     }

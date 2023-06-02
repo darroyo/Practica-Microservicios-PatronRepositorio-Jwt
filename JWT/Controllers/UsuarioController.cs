@@ -58,7 +58,7 @@ namespace JWT.Controllers
                 
                 // A partir de aqui los valores personalizados que queramos
                 // CUIDADO QUE ESTA INFO ES PÚBLICA, NO SE ENCRIPTA
-                new Claim("IdUsuario", usuario.Id.ToString()),
+                new Claim("IdUsuario", usuario.Id.ToString()),// todo, esto no creo que sea muy seguro
                 new Claim("Nombre", usuario.Nombre),
             };
 

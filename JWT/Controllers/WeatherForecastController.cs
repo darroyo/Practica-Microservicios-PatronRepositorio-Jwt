@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using System.Security.Claims;
 
 namespace JWT.Controllers
@@ -69,22 +71,11 @@ namespace JWT.Controllers
             // todo
             var identity = HttpContext.User.Identity as ClaimsIdentity;
 
-            var rToken = JWT.validarToken(identity);
+            var usuario = JWT.dameUsuarioPorToken(identity);
 
-            if (!rToken.success)
+            if(usuario == null || usuario.Rol !="Administrador")
             {
-                return rToken;
-            }
-
-            Usuario usuario = rToken.result;
-
-            if(usuario.Rol != "Administrador")
-            {
-                return new
-                {
-                    success = false,
-                    message = "No tienes permiso para acceder a esto ni a esta app"
-                };
+                return null;
             }
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
