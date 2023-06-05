@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRestful", "ApiRestful\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRestfull2", "ApiRestfull2\ApiRestfull2.csproj", "{99FA244E-9D1D-49CB-9998-A1844C9ACC7D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRestfullOrchestrator", "ApiRestfullOrchestrator\ApiRestfullOrchestrator.csproj", "{599091DC-BE7C-4DF6-8956-4B5CEAF36055}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiOrchestratorAndHealthCheck", "ApiRestfullOrchestrator\ApiOrchestratorAndHealthCheck.csproj", "{599091DC-BE7C-4DF6-8956-4B5CEAF36055}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatronRepositorio", "PatronRepositorio\PatronRepositorio.csproj", "{3FAA42E7-6F4E-44B7-B623-A9F77675E1EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWT", "JWT\JWT.csproj", "{C2A24BF0-4632-49BC-9BEF-C9B612879326}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWT", "JWT\JWT.csproj", "{C2A24BF0-4632-49BC-9BEF-C9B612879326}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsCalled", "CorsCalled\CorsCalled.csproj", "{87F44B5C-AFC7-45DB-BADA-4C8C2994E574}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsCaller", "CorsCaller\CorsCaller.csproj", "{1FE200C7-4D1E-4DFF-94E7-88043D96515E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{C2A24BF0-4632-49BC-9BEF-C9B612879326}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2A24BF0-4632-49BC-9BEF-C9B612879326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2A24BF0-4632-49BC-9BEF-C9B612879326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F44B5C-AFC7-45DB-BADA-4C8C2994E574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F44B5C-AFC7-45DB-BADA-4C8C2994E574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F44B5C-AFC7-45DB-BADA-4C8C2994E574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F44B5C-AFC7-45DB-BADA-4C8C2994E574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FE200C7-4D1E-4DFF-94E7-88043D96515E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FE200C7-4D1E-4DFF-94E7-88043D96515E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FE200C7-4D1E-4DFF-94E7-88043D96515E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FE200C7-4D1E-4DFF-94E7-88043D96515E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
