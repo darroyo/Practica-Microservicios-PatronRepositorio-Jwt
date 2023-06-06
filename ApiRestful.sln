@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatronRepositorio", "Patron
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWT", "JWT\JWT.csproj", "{C2A24BF0-4632-49BC-9BEF-C9B612879326}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsCalled", "CorsCalled\CorsCalled.csproj", "{87F44B5C-AFC7-45DB-BADA-4C8C2994E574}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorsCalled", "CorsCalled\CorsCalled.csproj", "{87F44B5C-AFC7-45DB-BADA-4C8C2994E574}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsCaller", "CorsCaller\CorsCaller.csproj", "{1FE200C7-4D1E-4DFF-94E7-88043D96515E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorsCaller", "CorsCaller\CorsCaller.csproj", "{1FE200C7-4D1E-4DFF-94E7-88043D96515E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcepcionesGlobales", "Excepciones\ExcepcionesGlobales.csproj", "{3E84A29F-F6DD-40D9-B32E-76D67F2998AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{1FE200C7-4D1E-4DFF-94E7-88043D96515E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FE200C7-4D1E-4DFF-94E7-88043D96515E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FE200C7-4D1E-4DFF-94E7-88043D96515E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E84A29F-F6DD-40D9-B32E-76D67F2998AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E84A29F-F6DD-40D9-B32E-76D67F2998AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E84A29F-F6DD-40D9-B32E-76D67F2998AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E84A29F-F6DD-40D9-B32E-76D67F2998AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
