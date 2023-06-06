@@ -1,3 +1,4 @@
+using ExcepcionesGlobales.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Excepciones.Controllers
@@ -18,8 +19,8 @@ namespace Excepciones.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpPost(Name = "EjemploPostConValidacion")]
+        public IEnumerable<WeatherForecast> EjemploPostConValidacion([FromBody] CreateBookInputModel createBookInputModel)
         {
             throw new Exception("Excepcion intencionada");
 

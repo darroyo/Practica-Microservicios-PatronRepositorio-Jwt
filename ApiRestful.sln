@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorsCalled", "CorsCalled\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorsCaller", "CorsCaller\CorsCaller.csproj", "{1FE200C7-4D1E-4DFF-94E7-88043D96515E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcepcionesGlobales", "Excepciones\ExcepcionesGlobales.csproj", "{3E84A29F-F6DD-40D9-B32E-76D67F2998AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcepcionesMiddleware y validaciones modelo", "Excepciones\ExcepcionesMiddleware y validaciones modelo.csproj", "{3E84A29F-F6DD-40D9-B32E-76D67F2998AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
